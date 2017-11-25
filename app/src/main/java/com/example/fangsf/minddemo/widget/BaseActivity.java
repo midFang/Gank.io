@@ -17,7 +17,7 @@ import android.widget.Toast;
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     protected final String TAG = this.getClass().getSimpleName();
-
+    
     private final boolean isDebug = true;
 
     protected Context mContext = this;
@@ -35,6 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         initView(mContextView);
         initData();
         initListener();
+        
     }
 
     protected abstract int bindLayout();
