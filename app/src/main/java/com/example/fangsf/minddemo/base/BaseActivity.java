@@ -1,4 +1,4 @@
-package com.example.fangsf.minddemo.widget;
+package com.example.fangsf.minddemo.base;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * @author fangsf
@@ -20,6 +23,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     
     private final boolean isDebug = true;
 
+    private Unbinder mUnbinder;
+
     protected Context mContext = this;
     protected View mContextView = null;
 
@@ -31,18 +36,16 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         mContextView = LayoutInflater.from(this)
                 .inflate(bindLayout(), null);
         setContentView(mContextView);
+        mUnbinder =   ButterKnife.bind(this);
 
-        initView(mContextView);
-        initData();
+        init();
         initListener();
-        
     }
+
+    protected abstract void init();
 
     protected abstract int bindLayout();
 
-    protected abstract void initView(View contextView);
-
-    protected abstract void initData();
 
     protected abstract void initListener();
 
@@ -89,5 +92,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onDestroy() {
         super.onDestroy();
         $Log(TAG + "--->onDestroy()");
+        mUnbinder.unbind();
     }
 }

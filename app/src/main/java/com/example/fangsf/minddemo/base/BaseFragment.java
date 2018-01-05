@@ -1,4 +1,4 @@
-package com.example.fangsf.minddemo.widget;
+package com.example.fangsf.minddemo.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,25 +20,20 @@ public abstract class BaseFragment extends Fragment {
 
     private View mContextView = null;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         $Log(TAG + "--->onCreateView()");
 
         mContextView = inflater.inflate(bindLayout(), container, false);
-        initView(mContextView);
-        initData();
+       init();
         return mContextView;
 
     }
 
+    protected abstract void init();
+
     protected abstract int bindLayout();
-
-    protected abstract void initView(View contextView);
-    
-    protected abstract void initData();
-
 
     private void $Log(String mes) {
         if (isDebug) {

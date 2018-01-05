@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FF7E66</color>
+    <color name="colorPrimaryDark">#e76a53</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="transparent">#00000000</color><!--透明色 -->
+    <color name="white">#FFFFFF</color><!--白色 -->
+    <color name="yellow">#FFFF00</color><!--黄色 -->
+    <color name="pink">#FFC0CB</color><!--粉红色 -->
+    <color name="orange">#FFA500</color><!--橙色 -->
+    <color name="red">#FF0000</color><!--红色 -->
+    <color name="brown">#A52A2A</color><!--褐色 -->
+    <color name="grey">#808080</color><!--灰色 -->
+    <color name="purple">#800080</color><!--紫色 -->
+    <color name="green">#008000</color><!--绿色 -->
+    <color name="blue">#0000FF</color><!--蓝色 -->
+    
+    <color name="textf7e6">#FF7E66</color><!--蓝色 -->
+
+    <color name="main">#FF7E66</color>
+    <color name="main_down">#e76a53</color>
+
+    <color name="topbar_background">#FFFFFF</color>
+    <color name="topbar_title_text_color">#4D4D4D</color>
+    <color name="topbar_bottom_line_color">#D4D4D4</color>
+
+    <color name="text4d">#4D4D4D</color>
+    <color name="text80">#808080</color>
+    <color name="textcc">#CCCCCC</color>
+    <color name="textb3">#B3B3B3</color>
+
+    <color name="line">#E9E9E9</color>
+    <color name="window_bg">#F2F2F2</color>
+    <color name="lv_divider">#FAFAFA</color>
+
+    <color name="edt_frame">#CCCCCC</color>
+    <color name="white_selected">#EEEEEE</color>
+
+    <color name="partTranslucent">#39000000</color>
+    
+    
+    
 </resources>
