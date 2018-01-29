@@ -6,4 +6,6 @@ package com.fangsf.gankio.presenter;
  */
 
 public class BasePresneter {
+
+
 }
