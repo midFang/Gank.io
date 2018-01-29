@@ -4,42 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/drawerLayout"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.fangsf.minddemo.ganio.example.fangsf.minddemo.MainActivity">
+   >
+
+    <include layout="@layout/content_layout" />
 
 
-    <LinearLayout
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigationview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_gravity="start"
+        android:layout_marginRight="50dp"
+        app:headerLayout="@layout/layout_head"
+        app:menu="@menu/menu_left">
 
-        <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimaryDark"
-            app:title="@string/app_name"
-            app:titleTextColor="@color/white"/>
-
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vpHome"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-        </android.support.v4.view.ViewPager>
-
-
-        <com.flyco.tablayout.CommonTabLayout
-            android:id="@+id/tabHome"
-            android:layout_width="match_parent"
-            app:tl_textUnselectColor="@color/main_down"
-            app:tl_textSelectColor="@color/main"
-            android:layout_height="55dp"
-            />
-
-    </LinearLayout>
+    </android.support.design.widget.NavigationView>
 
 
 </android.support.v4.widget.DrawerLayout>

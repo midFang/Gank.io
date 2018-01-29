@@ -7,20 +7,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fangsf.minddemo.R;
+
 /**
  * @author fangsf
  * @date 2018/1/5.
  * @useful:
  */
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(com.fangsf.minddemo.R.layout.fragment_home, container, false);
-        
-        return view;
+    protected void init() {
+
+    }
+
+    @Override
+    protected int bindLayout() {
+        return R.layout.fragment_home;
     }
 }
