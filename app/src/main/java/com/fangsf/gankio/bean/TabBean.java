@@ -1,4 +1,4 @@
-package com.example.fangsf.minddemo.bean;
+package com.fangsf.gankio.bean;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 

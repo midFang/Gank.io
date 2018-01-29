@@ -1,4 +1,4 @@
-package com.example.fangsf.minddemo.base;
+package com.fangsf.gankio.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;

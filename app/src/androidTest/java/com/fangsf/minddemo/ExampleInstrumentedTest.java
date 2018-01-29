@@ -1,4 +1,4 @@
-package com.example.fangsf.minddemo;
+package com.fangsf.minddemo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

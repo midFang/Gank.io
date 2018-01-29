@@ -1,14 +1,15 @@
-package com.example.fangsf.minddemo;
+package com.fangsf.gankio;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.example.fangsf.minddemo.adapter.IndexAdapter;
-import com.example.fangsf.minddemo.base.BaseActivity;
-import com.example.fangsf.minddemo.bean.TabBean;
-import com.example.fangsf.minddemo.fragment.ContentFragment;
-import com.example.fangsf.minddemo.fragment.HomeFragment;
-import com.example.fangsf.minddemo.fragment.MzFragment;
+import com.fangsf.minddemo.R;
+import com.fangsf.gankio.ui.adapter.IndexAdapter;
+import com.fangsf.gankio.ui.activity.BaseActivity;
+import com.fangsf.gankio.bean.TabBean;
+import com.fangsf.gankio.ui.fragment.ContentFragment;
+import com.fangsf.gankio.ui.fragment.HomeFragment;
+import com.fangsf.gankio.ui.fragment.MzFragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;

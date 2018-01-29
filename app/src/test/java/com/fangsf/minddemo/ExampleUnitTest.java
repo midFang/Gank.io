@@ -1,4 +1,4 @@
-package com.example.fangsf.minddemo;
+package com.fangsf.minddemo;
 
 import org.junit.Test;
 

@@ -1,9 +1,8 @@
-package com.example.fangsf.minddemo.adapter;
+package com.fangsf.gankio.ui.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
@@ -31,4 +30,6 @@ public class IndexAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return mFragments.size();
     }
+
+
 }

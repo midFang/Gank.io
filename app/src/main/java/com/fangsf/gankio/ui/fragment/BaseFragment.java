@@ -1,4 +1,4 @@
-package com.example.fangsf.minddemo.base;
+package com.fangsf.gankio.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
