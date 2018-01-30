@@ -9,6 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import com.fangsf.gankio.AppApplication;
+import com.fangsf.gankio.di.component.AppComponent;
+import com.fangsf.gankio.presenter.BasePresneter;
+
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -17,81 +23,51 @@ import butterknife.Unbinder;
  * @date 2017/11/23
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity<T extends BasePresneter> extends AppCompatActivity {
 
     protected final String TAG = this.getClass().getSimpleName();
-    
-    private final boolean isDebug = true;
 
     private Unbinder mUnbinder;
 
-    protected Context mContext = this;
+    @Inject
+    T mPresenter;
+
+    public AppApplication mAppApplication;
+
     protected View mContextView = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        $Log(TAG + "--->onCreate()");
-        
+
         mContextView = LayoutInflater.from(this)
                 .inflate(bindLayout(), null);
         setContentView(mContextView);
         mUnbinder =   ButterKnife.bind(this);
 
-        init();
-        initListener();
-    }
+        mAppApplication = (AppApplication) getApplication();
 
-    protected abstract void init();
+        setupActivityComponent(mAppApplication.getAppComponent());
+
+
+        init();
+    }
 
     protected abstract int bindLayout();
 
+    protected abstract void setupActivityComponent(AppComponent appComponent);
 
-    protected abstract void initListener();
-
-    protected void $Log(String msg) {
-        if (isDebug) {
-            Log.d(TAG, msg);
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        
-    }
+    protected abstract void init();
 
     protected void toast(String mes) {
-        Toast.makeText(mContext, mes, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        $Log(TAG + "--->onResume()");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        $Log(TAG + "--->onStart()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        $Log(TAG + "--->onStop()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        $Log(TAG + "--->onPause()");
+        Toast.makeText(this, mes, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        $Log(TAG + "--->onDestroy()");
-        mUnbinder.unbind();
+        if (mUnbinder != Unbinder.EMPTY) {
+            mUnbinder.unbind();
+        }
     }
 }

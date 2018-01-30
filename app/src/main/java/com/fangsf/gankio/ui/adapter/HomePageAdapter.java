@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.fangsf.gankio.bean.FragmentInfo;
-import com.fangsf.gankio.ui.fragment.ContentFragment;
-import com.fangsf.gankio.ui.fragment.HomeFragment;
+import com.fangsf.gankio.ui.fragment.IosFragment;
+import com.fangsf.gankio.ui.fragment.AndroidFragment;
 import com.fangsf.gankio.ui.fragment.MzFragment;
 
 import java.util.ArrayList;
@@ -28,9 +28,9 @@ public class HomePageAdapter extends FragmentStatePagerAdapter {
     }
 
     private void initFragment() {
-        mFragmentList.add(new FragmentInfo("Android", HomeFragment.class));
+        mFragmentList.add(new FragmentInfo("Android", AndroidFragment.class));
         mFragmentList.add(new FragmentInfo("福利", MzFragment.class));
-        mFragmentList.add(new FragmentInfo("ios", ContentFragment.class));
+        mFragmentList.add(new FragmentInfo("ios", IosFragment.class));
     }
 
     @Override

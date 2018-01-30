@@ -1,13 +1,16 @@
 package com.fangsf.gankio.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.fangsf.minddemo.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * @author fangsf
@@ -15,8 +18,11 @@ import com.fangsf.minddemo.R;
  * @useful:
  */
 
-public class ContentFragment extends BaseFragment {
+public class AndroidFragment extends BaseFragment {
 
+
+    @BindView(R.id.rcView)
+    RecyclerView mRcView;
 
     @Override
     protected void init() {
@@ -25,6 +31,9 @@ public class ContentFragment extends BaseFragment {
 
     @Override
     protected int bindLayout() {
-        return R.layout.fragment_content;
+        return R.layout.template_recylerview;
     }
+
+
+
 }

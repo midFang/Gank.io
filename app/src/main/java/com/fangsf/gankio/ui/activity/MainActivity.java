@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 
+import com.fangsf.gankio.di.component.AppComponent;
 import com.fangsf.gankio.ui.adapter.HomePageAdapter;
 import com.fangsf.minddemo.R;
 
@@ -16,7 +17,6 @@ import butterknife.BindView;
  * @author fangsf
  */
 public class MainActivity extends BaseActivity {
-
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -31,7 +31,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-
         initToolbar();
         initTab();
     }
@@ -52,7 +51,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initListener() {
+    protected void setupActivityComponent(AppComponent appComponent) {
 
     }
 
