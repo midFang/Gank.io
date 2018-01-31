@@ -17,7 +17,7 @@ public class AndroidContract {
 
 
    public interface IAndroidView extends BaseView {
-
+       void showData(ArrayList<ResultBean> resultBeans);
     }
 
    public interface IAndroidModel{

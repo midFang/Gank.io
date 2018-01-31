@@ -11,6 +11,8 @@ import android.support.v4.app.Fragment;
 
 public class BasePresneter<M, V extends BaseView> {
 
+    public final String TAG = this.getClass().getSimpleName();
+
     protected M mModel;
     protected V mView;
 

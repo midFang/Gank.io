@@ -1,5 +1,7 @@
 package com.fangsf.gankio.bean;
 
+import java.util.List;
+
 /**
  * Created by fangsf on 2018/1/30.
  * Useful:
@@ -7,16 +9,18 @@ package com.fangsf.gankio.bean;
 
 public class ResultBean {
 
+
     /**
-     * _id : 5a389723421aa90fe72536c5
-     * createdAt : 2017-12-19T12:35:47.103Z
-     * desc : Cipher.so: A simple way to encrypt your secure datas into a native .so library.
-     * publishedAt : 2018-01-16T08:40:08.101Z
+     * _id : 5a685120421aa911548992ab
+     * createdAt : 2018-01-24T17:25:52.341Z
+     * desc : Android 下的音乐可视化
+     * images : ["http://img.gank.io/e0d29181-282e-4465-9965-1da81e0557d9"]
+     * publishedAt : 2018-01-29T07:53:57.676Z
      * source : web
      * type : Android
-     * url : https://github.com/MEiDIK/Cipher.so
+     * url : https://github.com/nekocode/MusicVisualization
      * used : true
-     * who : drakeet
+     * who : nekocode
      */
 
     private String _id;
@@ -28,6 +32,7 @@ public class ResultBean {
     private String url;
     private boolean used;
     private String who;
+    private List<String> images;
 
     public String get_id() {
         return _id;
@@ -99,5 +104,13 @@ public class ResultBean {
 
     public void setWho(String who) {
         this.who = who;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fangsf.gankio.di.component.AppComponent;
 import com.fangsf.minddemo.R;
 
 /**
@@ -26,5 +27,10 @@ public class MzFragment extends BaseFragment {
     @Override
     protected int bindLayout() {
         return R.layout.fragment_mz;
+    }
+
+    @Override
+    protected void setupActivityComponent(AppComponent appComponent) {
+
     }
 }

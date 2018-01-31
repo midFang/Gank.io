@@ -4,6 +4,7 @@ import com.fangsf.gankio.bean.BaseBean;
 import com.fangsf.gankio.bean.ResultBean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -17,7 +18,7 @@ import retrofit2.http.Path;
 public interface ApiServer {
 
     String BASE_URL = "http://gank.io/api/";
-
+     String[] types = new String[]{"Android", "iOS", "休息视频", "福利", "拓展资源", "前端", "瞎推荐", "App"};
 
     /**
      *
@@ -28,6 +29,7 @@ public interface ApiServer {
      */
     @GET("data/{type}/{count}/{pageSize}")
     Observable<BaseBean<ArrayList<ResultBean>>> getData(@Path("type") String type, @Path("count") String count, @Path("pageSize") String pageSize);
+
 
 
 

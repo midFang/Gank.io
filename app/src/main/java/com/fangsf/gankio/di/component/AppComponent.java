@@ -19,8 +19,8 @@ import dagger.Component;
 @Component(modules = {AppModule.class, HttpModule.class})
 public interface AppComponent {
 
-//    ApiServer getApiserver();
-//
-//    Application getApplication();
+    ApiServer getApiserver();
+
+    Application getApplication();
 
 }
