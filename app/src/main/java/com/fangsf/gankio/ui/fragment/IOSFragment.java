@@ -24,7 +24,7 @@ import butterknife.BindView;
  * @useful:
  */
 
-public class AndroidFragment extends BaseFragment<DataPresenter> implements DatasContract.IDatasView, BaseQuickAdapter.RequestLoadMoreListener {
+public class IOSFragment extends BaseFragment<DataPresenter> implements DatasContract.IDatasView, BaseQuickAdapter.RequestLoadMoreListener {
 
     @BindView(R.id.rcView)
     RecyclerView mRcView;
@@ -38,8 +38,7 @@ public class AndroidFragment extends BaseFragment<DataPresenter> implements Data
     @Override
     protected void init() {
 
-        mPresenter.requestData("Android",10);
-
+        mPresenter.requestData("iOS",count);
         initRecylserView();
 
         initRefresh();
@@ -50,7 +49,7 @@ public class AndroidFragment extends BaseFragment<DataPresenter> implements Data
             @Override
             public void onRefresh() {
                 mAdapter.getData().clear();
-                mPresenter.requestData("Android",10);
+                mPresenter.requestData("iOS",count);
             }
         });
     }
@@ -108,6 +107,6 @@ public class AndroidFragment extends BaseFragment<DataPresenter> implements Data
     @Override
     public void onLoadMoreRequested() {
         count += 10;
-        mPresenter.requestData("Android",10);
+        mPresenter.requestData("iOS",count);
     }
 }

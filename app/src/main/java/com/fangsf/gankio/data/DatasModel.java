@@ -1,9 +1,9 @@
 package com.fangsf.gankio.data;
 
 import com.fangsf.gankio.bean.BaseBean;
-import com.fangsf.gankio.bean.ResultBean;
+import com.fangsf.gankio.bean.DataBean;
 import com.fangsf.gankio.data.http.ApiServer;
-import com.fangsf.gankio.presenter.contract.AndroidContract;
+import com.fangsf.gankio.presenter.contract.DatasContract;
 
 import java.util.ArrayList;
 
@@ -14,16 +14,16 @@ import io.reactivex.Observable;
  * Useful:
  */
 
-public class AndroidModel implements AndroidContract.IAndroidModel {
+public class DatasModel implements DatasContract.IDatasModel{
 
     private ApiServer mApiServer;
 
-    public AndroidModel(ApiServer apiServer) {
+    public DatasModel(ApiServer apiServer) {
         mApiServer = apiServer;
     }
 
     @Override
-    public Observable<BaseBean<ArrayList<ResultBean>>> getData(String type, String count, String pageSize) {
+    public Observable<BaseBean<ArrayList<DataBean>>> getData(String type, String count, String pageSize) {
         return mApiServer.getData(type, count, pageSize);
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
  * Useful:
  */
 
-public class ResultBean {
+public class DataBean {
 
 
     /**

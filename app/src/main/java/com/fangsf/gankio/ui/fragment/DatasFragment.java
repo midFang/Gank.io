@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.fangsf.gankio.bean.DataBean;
 import com.fangsf.gankio.di.component.AppComponent;
-import com.fangsf.gankio.di.component.DaggerDatasComponent;
-import com.fangsf.gankio.di.module.DatasModule;
 import com.fangsf.gankio.presenter.DataPresenter;
 import com.fangsf.gankio.presenter.contract.DatasContract;
 import com.fangsf.gankio.ui.adapter.DatasAdapter;
@@ -19,12 +17,11 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 /**
- * @author fangsf
- * @date 2018/1/5.
- * @useful:
+ * Created by fangsf on 2018/2/1.
+ * Useful:
  */
 
-public class AndroidFragment extends BaseFragment<DataPresenter> implements DatasContract.IDatasView, BaseQuickAdapter.RequestLoadMoreListener {
+public abstract class DatasFragment extends BaseFragment<DataPresenter> implements DatasContract.IDatasView , BaseQuickAdapter.RequestLoadMoreListener{
 
     @BindView(R.id.rcView)
     RecyclerView mRcView;
@@ -33,24 +30,31 @@ public class AndroidFragment extends BaseFragment<DataPresenter> implements Data
 
     private DatasAdapter mAdapter;
 
-    private int count = 10;
+    private int count = loadCount();
+
+    protected abstract int loadCount();
+
+    @Override
+    protected int bindLayout() {
+        return R.layout.template_recylerview;
+    }
 
     @Override
     protected void init() {
-
-        mPresenter.requestData("Android",10);
-
+        mPresenter.requestData(type(),count);
         initRecylserView();
 
         initRefresh();
     }
+
+    protected abstract String type();
 
     private void initRefresh() {
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 mAdapter.getData().clear();
-                mPresenter.requestData("Android",10);
+                mPresenter.requestData(type(),count);
             }
         });
     }
@@ -65,19 +69,6 @@ public class AndroidFragment extends BaseFragment<DataPresenter> implements Data
         mAdapter.openLoadAnimation();
         mAdapter.setOnLoadMoreListener(this);
     }
-
-    @Override
-    protected int bindLayout() {
-        return R.layout.template_recylerview;
-    }
-
-    @Override
-    protected void setupActivityComponent(AppComponent appComponent) {
-        DaggerDatasComponent.builder().appComponent(appComponent)
-                .datasModule(new DatasModule(this))
-                .build().inject(this);
-    }
-
 
     @Override
     public void showLoading() {
@@ -108,6 +99,6 @@ public class AndroidFragment extends BaseFragment<DataPresenter> implements Data
     @Override
     public void onLoadMoreRequested() {
         count += 10;
-        mPresenter.requestData("Android",10);
+        mPresenter.requestData(type(),count);
     }
 }
