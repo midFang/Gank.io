@@ -17,35 +17,22 @@ import java.util.List;
  * Useful:
  */
 
-public class AndroidAdapter extends BaseQuickAdapter<ArrayList<ResultBean>, BaseViewHolder> {
+public class AndroidAdapter extends BaseQuickAdapter<ResultBean, BaseViewHolder> {
 
     public AndroidAdapter(int layoutResId) {
         super(layoutResId);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, ArrayList<ResultBean> item) {
-
-        if (item != null) {
-            TextView tvTitle = helper.getView(R.id.tvTitle);
-            tvTitle.setText(item.get(helper.getAdapterPosition()).getType());
+    protected void convert(BaseViewHolder helper, ResultBean resultBean) {
 
 
-            ImageView ivImg = helper.getView(R.id.ivImg);
-//            List<String> images = item.get(helper.getAdapterPosition()).getImages();
-//            if (images != null) {
-//
-//                Glide.with(mContext).load(item.get(images.get(0)));
-//            }
+        if (resultBean != null) {
 
-            TextView tvAuthor = helper.getView(R.id.tvAuthor);
-            tvAuthor.setText(item.get(helper.getAdapterPosition()).getWho());
-
-            TextView tvDays = helper.getView(R.id.tvDays);
-
+            helper.setText(R.id.tvTitle, resultBean.getDesc());
+            helper.setText(R.id.tvAuthor, resultBean.getWho());
 
         }
-
 
 
     }

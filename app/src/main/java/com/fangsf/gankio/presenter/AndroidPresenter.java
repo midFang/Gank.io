@@ -27,29 +27,50 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AndroidPresenter extends BasePresneter<AndroidContract.IAndroidModel, AndroidContract.IAndroidView> {
 
+    private int LOADMORE_COUNT = 10;
+
     @Inject
     public AndroidPresenter(AndroidContract.IAndroidModel model, AndroidContract.IAndroidView view) {
         super(model, view);
     }
 
+    public void requestMoreData(int count) {
+        if (count == LOADMORE_COUNT) {
+            getAndroidData("Android", count, 1);
+        } else if (count > LOADMORE_COUNT) {
+            // loadMore
+            getAndroidData("Android", count, 1);
+        }
+    }
 
-    public void getAndroidData() {
+    private void getAndroidData(String type, final int count, int pageSize) {
 
-        mModel.getData("Android", "15", "1").compose(RxHttpResponseCompat.<ArrayList<ResultBean>>composeResult())
+        mView.showLoading();
+
+        mModel.getData(type, String.valueOf(count), String.valueOf(pageSize)).compose(RxHttpResponseCompat.<ArrayList<ResultBean>>composeResult())
                 .subscribe(new Consumer<ArrayList<ResultBean>>() {
                     @Override
                     public void accept(ArrayList<ResultBean> resultBeans) throws Exception {
-                        mView.showData(resultBeans);
+                        if (count == LOADMORE_COUNT) {
+                            mView.showData(resultBeans);
+                            mView.dismissLoading();
+                        }
+
+                        if ( count > LOADMORE_COUNT) {
+                            mView.loadMore(resultBeans);
+                        }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        mView.dismissLoading();
                         mView.showError(throwable.getMessage());
                         throwable.printStackTrace();
                         Log.e(TAG, "accept: "+ throwable.getMessage() );
                     }
                 });
 
+        mView.dismissLoading();
 
     }
 

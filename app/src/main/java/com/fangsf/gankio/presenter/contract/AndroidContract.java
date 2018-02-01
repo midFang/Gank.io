@@ -17,8 +17,11 @@ public class AndroidContract {
 
 
    public interface IAndroidView extends BaseView {
+
        void showData(ArrayList<ResultBean> resultBeans);
-    }
+
+       void loadMore(ArrayList<ResultBean> resultBeans);
+   }
 
    public interface IAndroidModel{
         Observable<BaseBean<ArrayList<ResultBean>>> getData(String type, String count, String pageSize);

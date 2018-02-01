@@ -7,6 +7,8 @@ package com.fangsf.gankio.presenter;
 
 public interface BaseView {
 
+    void showLoading();
     void showError(String mes);
+    void dismissLoading();
 
 }
