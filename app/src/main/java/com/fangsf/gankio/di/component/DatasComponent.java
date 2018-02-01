@@ -2,8 +2,10 @@ package com.fangsf.gankio.di.component;
 
 import com.fangsf.gankio.di.FragmentScope;
 import com.fangsf.gankio.di.module.DatasModule;
-import com.fangsf.gankio.ui.fragment.AndroidFragment;
-import com.fangsf.gankio.ui.fragment.IOSFragment;
+import com.fangsf.gankio.ui.fragment.hometab.AllFragment;
+import com.fangsf.gankio.ui.fragment.hometab.AndroidFragment;
+import com.fangsf.gankio.ui.fragment.hometab.BlindRecommendFragment;
+import com.fangsf.gankio.ui.fragment.hometab.IOSFragment;
 
 import dagger.Component;
 
@@ -20,4 +22,7 @@ public interface DatasComponent {
 
     void inject(IOSFragment fragment);
 
+    void inject(AllFragment fragment);
+
+    void inject(BlindRecommendFragment fragment);
 }

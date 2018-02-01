@@ -1,4 +1,4 @@
-package com.fangsf.gankio.ui.fragment;
+package com.fangsf.gankio.ui.fragment.hometab;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fangsf.gankio.di.component.AppComponent;
+import com.fangsf.gankio.ui.fragment.BaseFragment;
 import com.fangsf.minddemo.R;
 
 /**

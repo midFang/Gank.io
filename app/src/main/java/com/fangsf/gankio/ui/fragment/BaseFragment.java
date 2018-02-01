@@ -26,7 +26,7 @@ import butterknife.Unbinder;
 public abstract class BaseFragment<T extends BasePresneter> extends Fragment {
 
     @Inject
-    T mPresenter;
+   public T mPresenter;
 
     private Unbinder mUnbinder;
     protected AppApplication mAppApplication;
