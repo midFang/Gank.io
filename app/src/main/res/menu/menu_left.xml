@@ -5,4 +5,11 @@
         android:id="@+id/setting"
         android:title="设置" />
 
+
+    <item
+        android:id="@+id/collect"
+        android:title="我的收藏" />
+
+
+
 </menu>

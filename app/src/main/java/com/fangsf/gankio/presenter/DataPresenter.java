@@ -37,20 +37,22 @@ public class DataPresenter extends BasePresneter<DatasContract.IDatasModel, Data
 
     private void getAndroidData(String type, final int count, int pageSize) {
 
-        mView.showLoading();
+
 
         mModel.getData(type, String.valueOf(count), String.valueOf(pageSize)).compose(RxHttpResponseCompat.<ArrayList<DataBean>>composeResult())
                 .subscribe(new Consumer<ArrayList<DataBean>>() {
                     @Override
                     public void accept(ArrayList<DataBean> dataBeans) throws Exception {
                         if (count == LOAD_MORE_COUNT) {
+                            mView.showLoading();
                             mView.showData(dataBeans);
-                            mView.dismissLoading();
                         }
 
                         if ( count > LOAD_MORE_COUNT) {
                             mView.loadMore(dataBeans);
                         }
+
+                        mView.dismissLoading();
                     }
                 }, new Consumer<Throwable>() {
                     @Override

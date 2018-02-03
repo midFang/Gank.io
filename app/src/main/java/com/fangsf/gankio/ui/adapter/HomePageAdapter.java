@@ -10,6 +10,7 @@ import com.fangsf.gankio.ui.fragment.hometab.BlindRecommendFragment;
 import com.fangsf.gankio.ui.fragment.hometab.IOSFragment;
 import com.fangsf.gankio.ui.fragment.hometab.AndroidFragment;
 import com.fangsf.gankio.ui.fragment.hometab.MzFragment;
+import com.fangsf.gankio.ui.fragment.hometab.TodayRecommendFragment;
 import com.fangsf.gankio.ui.fragment.hometab.VideoFragment;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class HomePageAdapter extends FragmentStatePagerAdapter {
     }
 
     private void initFragment() {
+        mFragmentList.add(new FragmentInfo("今日推荐", TodayRecommendFragment.class));
         mFragmentList.add(new FragmentInfo("All", AllFragment.class));
         mFragmentList.add(new FragmentInfo("Android", AndroidFragment.class));
         mFragmentList.add(new FragmentInfo("福利", MzFragment.class));
