@@ -1,5 +1,6 @@
 package com.fangsf.gankio.ui.activity;
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -52,7 +53,7 @@ public class MainActivity extends BaseActivity<RandomPresenter> implements Rando
 
     @Override
     protected void init() {
-        mPresenter.getRandomData("福利","1");
+        mPresenter.getRandomData("福利", "1");
 
         initToolbar();
         initTab();
@@ -60,18 +61,37 @@ public class MainActivity extends BaseActivity<RandomPresenter> implements Rando
     }
 
 
-
-
     private void initNavigationView() {
         View headerView = mNavigationview.getHeaderView(0);
+
         mIvGirl = headerView.findViewById(R.id.ivGirl);
-       TextView tvDate = headerView.findViewById(R.id.tvDate);
+        TextView tvDate = headerView.findViewById(R.id.tvDate);
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-
-        String time = format.format(new Date());
-
+        String time = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
         tvDate.setText(time);
+
+        mNavigationview.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.setting:
+                        toast("设置");
+                        break;
+
+                    case R.id.collect:
+                        toast("我的收藏");
+                        break;
+
+                    case R.id.recommend:
+                        jumpAct(TodayRecommendActivity.class);
+                        break;
+
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     private void initToolbar() {
@@ -124,7 +144,7 @@ public class MainActivity extends BaseActivity<RandomPresenter> implements Rando
 
     @Override
     public void showData(ArrayList<RandomBean> randomBean) {
-        Glide.with(this).load(randomBean.get(0).getUrl()+"?imageView2/0/w/"+ DensityUtil.getScreenW(this)).into(mIvGirl);
+        Glide.with(this).load(randomBean.get(0).getUrl() + "?imageView2/0/w/" + DensityUtil.getScreenW(this)).into(mIvGirl);
     }
 
 }

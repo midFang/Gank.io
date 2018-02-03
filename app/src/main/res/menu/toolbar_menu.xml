@@ -4,8 +4,9 @@
 
 
     <item
+        android:title="搜索"
         android:id="@+id/actionSearch"
-        android:icon="@mipmap/ic_search"
+        android:icon="@drawable/ic_search"
         app:showAsAction="always" />
 
 </menu>
