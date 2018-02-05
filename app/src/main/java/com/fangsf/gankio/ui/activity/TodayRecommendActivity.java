@@ -61,16 +61,18 @@ public class TodayRecommendActivity extends BaseActivity<TodayRecommendPresenter
     protected void init() {
         initToolbar();
 
-        initAdapter();
+
 
         mPresenter.getRandomImage(type, String.valueOf(count));
         mPresenter.getHistoryDay();
     }
 
-    private void initAdapter() {
-        mAdapter = new TodayRecommendAdapter(R.layout.item_recommend);
+    private void initAdapter(List<DataBean> historyDayBean) {
+
+        mAdapter = new TodayRecommendAdapter(R.layout.item_recommend, historyDayBean);
         mRecyclerViewToday.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewToday.setAdapter(mAdapter);
+
     }
 
     private void initToolbar() {
@@ -117,7 +119,8 @@ public class TodayRecommendActivity extends BaseActivity<TodayRecommendPresenter
     @Override
     public void showHistoryRecommend(List<DataBean> historyDayBean) {
 
-        mAdapter.addData(historyDayBean);
+        initAdapter(historyDayBean);
+//        mAdapter.addData(historyDayBean);
 
     }
 

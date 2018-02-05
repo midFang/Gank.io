@@ -1,5 +1,6 @@
 package com.fangsf.gankio.ui.adapter;
 
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -28,15 +29,26 @@ public class DatasAdapter extends BaseQuickAdapter<DataBean, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, DataBean dataBean) {
 
+        ImageView imageView = helper.getView(R.id.ivImg);
 
         if (dataBean != null) {
 
             if (dataBean.getType().equals("福利")) {
 
-                // todo 判断当前加载的 的页面是 allFragment tomorrow todo
-                Glide.with(mContext).load(dataBean.getUrl().toString()+"?imageView2/0/w/"+ DensityUtil.getScreenW(mContext)).into((ImageView) helper.getView(R.id.ivImg));
+                // 只有在福利的type下 才有图片
+                String url = dataBean.getUrl();
+
+                if (url != null) {
+                    imageView.setVisibility(View.VISIBLE);
+                    Glide.with(mContext).load(url +"?imageView2/0/w/"+ DensityUtil.getScreenW(mContext)).into(imageView);
+                } else {
+                    imageView.setVisibility(View.GONE);
+                }
+
 
             } else {
+                imageView.setVisibility(View.GONE);
+
                 helper.setText(R.id.tvTitle, dataBean.getDesc());
                 helper.setText(R.id.tvAuthor, dataBean.getWho());
 
