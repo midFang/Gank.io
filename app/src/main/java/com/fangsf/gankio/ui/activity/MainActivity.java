@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.fangsf.gankio.bean.RandomBean;
 import com.fangsf.gankio.common.utils.DensityUtil;
 import com.fangsf.gankio.di.component.AppComponent;
@@ -144,7 +145,7 @@ public class MainActivity extends BaseActivity<RandomPresenter> implements Rando
 
     @Override
     public void showData(ArrayList<RandomBean> randomBean) {
-        Glide.with(this).load(randomBean.get(0).getUrl() + "?imageView2/0/w/" + DensityUtil.getScreenW(this)).into(mIvGirl);
+        Glide.with(this).load(randomBean.get(0).getUrl() + "?imageView2/0/w/" + DensityUtil.getScreenW(this)).error(R.mipmap.test).into(mIvGirl);
     }
 
 }

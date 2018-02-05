@@ -2,10 +2,10 @@ package com.fangsf.gankio.data.http;
 
 import com.fangsf.gankio.bean.BaseBean;
 import com.fangsf.gankio.bean.DataBean;
+import com.fangsf.gankio.bean.DayInfo;
 import com.fangsf.gankio.bean.RandomBean;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -34,6 +34,20 @@ public interface ApiServer {
      */
     @GET("random/data/{type}/{count}")
     Observable<BaseBean<ArrayList<RandomBean>>> getRandomData(@Path("type") String type, @Path("count") String count);
+
+
+    /**
+     * 获取 往期 干货推荐 日期
+     */
+    @GET("day/history")
+    Observable<BaseBean<ArrayList<String>>> getHistoriesDay();
+
+    /**
+     * 获取 历史推荐干货
+     */
+    @GET("day/{date}")
+    Observable<DayInfo> getHistoriesRecommend(@Path("date") String date);
+
 
 
 }
