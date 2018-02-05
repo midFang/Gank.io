@@ -11,6 +11,7 @@ import com.fangsf.gankio.ui.fragment.hometab.IOSFragment;
 import com.fangsf.gankio.ui.fragment.hometab.AndroidFragment;
 import com.fangsf.gankio.ui.fragment.hometab.MzFragment;
 import com.fangsf.gankio.ui.fragment.hometab.VideoFragment;
+import com.fangsf.gankio.ui.fragment.hometab.WebFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class HomePageAdapter extends FragmentStatePagerAdapter {
     private void initFragment() {
         mFragmentList.add(new FragmentInfo("All", AllFragment.class));
         mFragmentList.add(new FragmentInfo("Android", AndroidFragment.class));
+        mFragmentList.add(new FragmentInfo("前端", WebFragment.class));
         mFragmentList.add(new FragmentInfo("福利", MzFragment.class));
         mFragmentList.add(new FragmentInfo("休息视频", VideoFragment.class));
         mFragmentList.add(new FragmentInfo("iOS", IOSFragment.class));

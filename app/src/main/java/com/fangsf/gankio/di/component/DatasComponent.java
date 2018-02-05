@@ -6,6 +6,7 @@ import com.fangsf.gankio.ui.fragment.hometab.AllFragment;
 import com.fangsf.gankio.ui.fragment.hometab.AndroidFragment;
 import com.fangsf.gankio.ui.fragment.hometab.BlindRecommendFragment;
 import com.fangsf.gankio.ui.fragment.hometab.IOSFragment;
+import com.fangsf.gankio.ui.fragment.hometab.WebFragment;
 
 import dagger.Component;
 
@@ -25,4 +26,6 @@ public interface DatasComponent {
     void inject(AllFragment fragment);
 
     void inject(BlindRecommendFragment fragment);
+
+    void inject(WebFragment fragment);
 }

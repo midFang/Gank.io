@@ -5,11 +5,11 @@ import com.fangsf.gankio.di.component.DaggerDatasComponent;
 import com.fangsf.gankio.di.module.DatasModule;
 
 /**
- * Created by fangsf on 2018/2/1.
- * Useful: 瞎推荐
+ * Created by fangsf on 2018/2/5.
+ * Useful:
  */
 
-public class BlindRecommendFragment extends DatasFragment {
+public class WebFragment extends DatasFragment {
     @Override
     protected int loadCount() {
         return 10;
@@ -17,7 +17,7 @@ public class BlindRecommendFragment extends DatasFragment {
 
     @Override
     protected String type() {
-        return "瞎推荐";
+        return "前端";
     }
 
     @Override
