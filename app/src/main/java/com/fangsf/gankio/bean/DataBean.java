@@ -1,5 +1,6 @@
 package com.fangsf.gankio.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * Useful:
  */
 
-public class DataBean {
+public class DataBean implements Serializable {
 
 
     /**

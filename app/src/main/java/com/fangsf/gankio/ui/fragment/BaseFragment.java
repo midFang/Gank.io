@@ -1,5 +1,6 @@
 package com.fangsf.gankio.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -64,6 +65,11 @@ public abstract class BaseFragment<T extends BasePresneter> extends Fragment {
     public void toast(String mes) {
         Toast.makeText(getContext(), ""+mes, Toast.LENGTH_SHORT).show();
     }
+
+    public void jumpAct(Class clz) {
+        startActivity(new Intent(getContext(), clz));
+    }
+
 
     @Override
     public void onDestroyView() {

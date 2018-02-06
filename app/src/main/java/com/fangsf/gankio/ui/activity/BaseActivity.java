@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +38,7 @@ public abstract class BaseActivity<T extends BasePresneter> extends AppCompatAct
     public AppApplication mAppApplication;
 
     protected View mContextView = null;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +69,20 @@ public abstract class BaseActivity<T extends BasePresneter> extends AppCompatAct
 
     public void jumpAct(Class clz) {
         startActivity(new Intent(this, clz));
+    }
+
+    public void initToolbar(Toolbar mToolbar) {
+        this.mToolbar = mToolbar;
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+            ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+              // actionBar.setDisplayShowTitleEnabled(false);
+            }
+
+            mToolbar.setNavigationOnClickListener(v -> finish());
+        }
     }
 
     @Override

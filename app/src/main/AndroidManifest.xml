@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.fangsf.gankio.ui.activity.TodayRecommendActivity"></activity>
+        <activity android:name="com.fangsf.gankio.ui.activity.TodayRecommendActivity" />
+        <activity android:name="com.fangsf.gankio.ui.activity.GankWebActivity"></activity>
     </application>
 
 </manifest>

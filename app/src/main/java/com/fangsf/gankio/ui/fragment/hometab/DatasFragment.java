@@ -1,14 +1,23 @@
 package com.fangsf.gankio.ui.fragment.hometab;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.fangsf.gankio.bean.DataBean;
+import com.fangsf.gankio.common.Constant;
 import com.fangsf.gankio.presenter.DataPresenter;
 import com.fangsf.gankio.presenter.contract.DatasContract;
+import com.fangsf.gankio.ui.activity.GankWebActivity;
 import com.fangsf.gankio.ui.adapter.DatasAdapter;
 import com.fangsf.gankio.ui.fragment.BaseFragment;
 import com.fangsf.minddemo.R;
@@ -43,7 +52,7 @@ public abstract class DatasFragment extends BaseFragment<DataPresenter> implemen
     @Override
     protected void init() {
         mPresenter.requestData(type(), count);
-        initRecylserView();
+        initRecylerView();
 
         initRefresh();
     }
@@ -51,24 +60,39 @@ public abstract class DatasFragment extends BaseFragment<DataPresenter> implemen
     protected abstract String type();
 
     private void initRefresh() {
-        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                count = 10;
-                mPresenter.requestData(type(), count);
-            }
+        mRefreshLayout.setOnRefreshListener(() -> {
+            count = 10;
+            mPresenter.requestData(type(), count);
         });
     }
 
-    private void initRecylserView() {
+    private void initRecylerView() {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         mRcView.setLayoutManager(manager);
         mAdapter = new DatasAdapter(R.layout.item_cardview);
         mRcView.setAdapter(mAdapter);
         mAdapter.setEnableLoadMore(true);
-        mAdapter.openLoadAnimation();
+//        mAdapter.openLoadAnimation();
         mAdapter.setOnLoadMoreListener(this);
+
+
+        mRcView.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                DataBean dataBean = mAdapter.getData().get(position);
+
+
+                if (!dataBean.getType().equals("福利")) {
+                    Intent intent = new Intent(getContext(), GankWebActivity.class);
+                    intent.putExtra(Constant.WEB_DATA_BEAN, dataBean);
+                    startActivity(intent);
+                }
+
+            }
+        });
+
+
     }
 
     @Override
@@ -91,6 +115,7 @@ public abstract class DatasFragment extends BaseFragment<DataPresenter> implemen
     public void showData(ArrayList<DataBean> dataBeans) {
         mAdapter.getData().clear();
         mAdapter.addData(dataBeans);
+
     }
 
     @Override
