@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.fangsf.gankio.ui.activity.TodayRecommendActivity" />
-        <activity android:name="com.fangsf.gankio.ui.activity.GankWebActivity"></activity>
+        <activity android:name="com.fangsf.gankio.ui.activity.GankWebActivity" />
+        <activity android:name="com.fangsf.gankio.ui.activity.SettingActivity"></activity>
     </application>
 
 </manifest>

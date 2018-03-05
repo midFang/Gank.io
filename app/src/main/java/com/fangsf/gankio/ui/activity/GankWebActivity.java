@@ -1,5 +1,6 @@
 package com.fangsf.gankio.ui.activity;
 
+import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -47,8 +48,9 @@ public class GankWebActivity extends BaseActivity {
     }
 
     private void initData() {
-        mDataBean = (DataBean) getIntent().getSerializableExtra(Constant.WEB_DATA_BEAN);
 
+
+        mDataBean = (DataBean) getIntent().getSerializableExtra(Constant.WEB_DATA_BEAN);
 
 
         WebSettings settings = mWebView.getSettings();

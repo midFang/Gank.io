@@ -65,8 +65,6 @@ public class TodayRecommendActivity extends BaseActivity<TodayRecommendPresenter
     protected void init() {
         initToolbar();
 
-
-
         mPresenter.getRandomImage(type, String.valueOf(count));
         mPresenter.getHistoryDay();
     }

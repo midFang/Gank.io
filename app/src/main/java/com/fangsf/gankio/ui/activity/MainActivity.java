@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity<RandomPresenter> implements Rando
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.setting:
-                        toast("设置");
+                        jumpAct(SettingActivity.class);
                         break;
 
                     case R.id.collect:
@@ -101,15 +101,12 @@ public class MainActivity extends BaseActivity<RandomPresenter> implements Rando
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close);
         toggle.syncState();
 
-        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.actionSearch) {
-                    toast("搜索");
-                }
-
-                return true;
+        mToolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.actionSearch) {
+                toast("搜索");
             }
+
+            return true;
         });
     }
 
