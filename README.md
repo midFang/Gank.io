@@ -1,4 +1,4 @@
-# MindDemo
+# Gank.io
 
 # Preview
 
