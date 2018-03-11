@@ -4,11 +4,13 @@ import com.fangsf.gankio.bean.BaseBean;
 import com.fangsf.gankio.bean.DataBean;
 import com.fangsf.gankio.bean.DayInfo;
 import com.fangsf.gankio.bean.RandomBean;
+import com.fangsf.gankio.bean.VideoBean;
 
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Path;
 
 /**
@@ -19,6 +21,7 @@ import retrofit2.http.Path;
 public interface ApiServer {
 
     String BASE_URL = "http://gank.io/api/";
+    String BASE_URL_VIDEO = "http://api.m.mtime.cn/";
 
     /**
      * @param type     数据类型： 福利 | Android | iOS | 休息视频 | 拓展资源 | 前端 | all
@@ -48,6 +51,13 @@ public interface ApiServer {
     @GET("day/{date}")
     Observable<DayInfo> getHistoriesRecommend(@Path("date") String date);
 
+
+    /**
+     * 获取视频
+     */
+    @Headers("bqs_auth:video")
+    @GET("PageSubArea/TrailerList.api")
+    Observable<VideoBean> getVideoData();
 
 
 }

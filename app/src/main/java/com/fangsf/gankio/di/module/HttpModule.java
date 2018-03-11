@@ -2,17 +2,22 @@ package com.fangsf.gankio.di.module;
 
 import android.app.Application;
 
+import com.fangsf.gankio.common.intercept.OkhttpIntercept;
 import com.fangsf.gankio.data.http.ApiServer;
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -33,6 +38,7 @@ public class HttpModule {
 
         return builder.connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
+                .addInterceptor(new OkhttpIntercept())
                 .build();
     }
 

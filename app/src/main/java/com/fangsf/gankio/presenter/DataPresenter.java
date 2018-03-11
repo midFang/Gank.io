@@ -37,8 +37,6 @@ public class DataPresenter extends BasePresneter<DatasContract.IDatasModel, Data
 
     private void getAndroidData(String type, final int count, int pageSize) {
 
-
-
         mModel.getData(type, String.valueOf(count), String.valueOf(pageSize)).compose(RxHttpResponseCompat.<ArrayList<DataBean>>composeResult())
                 .subscribe(new Consumer<ArrayList<DataBean>>() {
                     @Override

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.fangsf.minddemo"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -58,4 +58,8 @@ dependencies {
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.0'
+
+    compile 'com.shuyu:GSYVideoPlayer:4.1.0'
+
+
 }
