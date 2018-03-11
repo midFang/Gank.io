@@ -1,24 +1,18 @@
 package com.fangsf.gankio.ui.adapter;
 
 import android.annotation.SuppressLint;
-import android.media.AudioManager;
+import android.content.res.Configuration;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.fangsf.gankio.bean.VideoBean;
 import com.fangsf.minddemo.R;
-import com.shuyu.gsyvideoplayer.GSYVideoManager;
-import com.shuyu.gsyvideoplayer.model.GSYModel;
+import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.NormalGSYVideoPlayer;
-
-import java.io.IOException;
-import java.util.List;
-
-import tv.danmaku.ijk.media.player.IjkMediaPlayer;
+import com.shuyu.gsyvideoplayer.video.base.GSYBaseVideoPlayer;
 
 /**
  * Created by fangsf on 2018/3/11.
@@ -26,6 +20,8 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
  */
 
 public class VideoAdapter extends BaseQuickAdapter<VideoBean.TrailersBean, BaseViewHolder> {
+
+    public NormalGSYVideoPlayer mVideoPlayer;
 
     public VideoAdapter(int layoutResId) {
         super(layoutResId);
@@ -36,24 +32,33 @@ public class VideoAdapter extends BaseQuickAdapter<VideoBean.TrailersBean, BaseV
     @Override
     protected void convert(BaseViewHolder helper, VideoBean.TrailersBean item) {
 
-        NormalGSYVideoPlayer view = helper.getView(R.id.normalGsyVideo);
+        NormalGSYVideoPlayer mVideoPlayer = helper.getView(R.id.normalGsyVideo);
 
-        if (view != null) {
+        if (mVideoPlayer != null) {
 
-
-            view.initUIState();
+            //   view.initUIState();
 
             // 设置封面
             ImageView imageView = new ImageView(mContext);
             Glide.with(mContext).load(item.getCoverImg()).centerCrop().into(imageView);
-            view.setThumbImageView(imageView);
+            mVideoPlayer.setThumbImageView(imageView);
 
-            view.setUp(item.getUrl(), false, item.getMovieName());
+            mVideoPlayer.setUp(item.getUrl(), false, item.getMovieName());
 
-            view.setReleaseWhenLossAudio(true);
+            mVideoPlayer.setReleaseWhenLossAudio(true);
 
-            view.setShowFullAnimation(true);
+            mVideoPlayer.setShowFullAnimation(true);
 
+            mVideoPlayer.getTitleTextView().setTextSize(13);
+            mVideoPlayer.getBackButton().setVisibility(View.GONE);
+
+            mVideoPlayer.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mVideoPlayer.startWindowFullscreen(mContext, false, true);
+                    mVideoPlayer.setLockLand(true);
+                }
+            });
 
         }
 

@@ -17,6 +17,7 @@ import com.fangsf.gankio.presenter.contract.VideoContract;
 import com.fangsf.gankio.ui.adapter.VideoAdapter;
 import com.fangsf.gankio.ui.fragment.BaseFragment;
 import com.fangsf.minddemo.R;
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -92,6 +93,17 @@ public class VideoFragment extends BaseFragment<VideoPresenter> implements Video
     @Override
     public void showData(VideoBean videoBean) {
         mAdapter.addData(videoBean.getTrailers());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (mAdapter.mVideoPlayer != null) {
+            mAdapter.mVideoPlayer.clearCurrentCache();
+            mAdapter.mVideoPlayer.release();
+            GSYVideoManager.onPause();
+        }
     }
 
 }

@@ -7,14 +7,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.fangsf.gankio.bean.RandomBean;
+import com.fangsf.gankio.common.utils.AppManager;
 import com.fangsf.gankio.common.utils.DensityUtil;
 import com.fangsf.gankio.di.component.AppComponent;
 import com.fangsf.gankio.di.component.DaggerRandomDataComponent;
@@ -46,6 +49,8 @@ public class MainActivity extends BaseActivity<RandomPresenter> implements Rando
     @BindView(R.id.drawerLayout)
     DrawerLayout mDrawerLayout;
     private ImageView mIvGirl;
+
+    private long mExitTime = 0;
 
     @Override
     protected int bindLayout() {
@@ -143,6 +148,22 @@ public class MainActivity extends BaseActivity<RandomPresenter> implements Rando
     @Override
     public void showData(ArrayList<RandomBean> randomBean) {
         Glide.with(this).load(randomBean.get(0).getUrl() + "?imageView2/0/w/" + DensityUtil.getScreenW(this)).error(R.mipmap.test).into(mIvGirl);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();// 更新mExitTime
+            } else {
+                AppManager.getAppManager().exitApp();
+               // System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+
     }
 
 }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.fangsf.gankio.AppApplication;
+import com.fangsf.gankio.common.utils.AppManager;
 import com.fangsf.gankio.di.component.AppComponent;
 import com.fangsf.gankio.presenter.BasePresneter;
 
@@ -43,6 +44,8 @@ public abstract class BaseActivity<T extends BasePresneter> extends AppCompatAct
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AppManager.getAppManager().addActivity(this);
 
         mContextView = LayoutInflater.from(this)
                 .inflate(bindLayout(), null);
