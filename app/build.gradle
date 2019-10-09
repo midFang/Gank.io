@@ -67,7 +67,7 @@ dependencies {
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
 
 
-    
+
 
 }
 repositories {
