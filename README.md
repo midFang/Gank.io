@@ -3,8 +3,8 @@
 # Preview
 
 
-<img src="http://ov1juqlla.bkt.clouddn.com/02.gif" alt="images" title="images" width="216" height="384" />  | <img src="http://ov1juqlla.bkt.clouddn.com/03.gif" alt="images" title="images" width="216" height="384" /> |
-<img src="http://ov1juqlla.bkt.clouddn.com/00.gif" alt="images" title="images" width="216" height="384" />
+<img src="https://github.com/midFang/Gank.io/blob/master/images/1.gif" alt="images" title="images" width="216" height="384" />  | <img src="https://github.com/midFang/Gank.io/blob/master/images/2.gif" alt="images" title="images" width="216" height="384" /> |
+<img src="https://github.com/midFang/Gank.io/blob/master/images/3.gif" alt="images" title="images" width="216" height="384" />
 ---|---|---
 
 
