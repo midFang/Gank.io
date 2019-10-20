@@ -27,14 +27,14 @@
 
         <Preference
             android:key="author"
-            android:summary="highFeng"
+            android:summary="midFang"
             android:title="作者" />
 
 
 
         <Preference
             android:key="github"
-            android:summary="https://github.com/highFeng/Gank.io"
+            android:summary="https://github.com/midFang/Gank.io"
             android:title="github" />
 
     </PreferenceCategory>
